@@ -8,15 +8,15 @@ public class SimpleStringEncoder {
         for (int i = 1; i < input.length(); i++) {
             if (input.charAt(i) == symbol) {
                 counter++;
-            } else if (counter == 1) {
-                result += symbol;
-                symbol = input.charAt(i);
             } else {
-                result = result + symbol + counter;
+                result += symbol;
+                result += (counter > 1) ? counter : "";
                 symbol = input.charAt(i);
                 counter = 1;
             }
         }
-        return counter > 1 ? result + symbol + counter : result + symbol;
+        result += symbol;
+        result += (counter > 1) ? counter : "";
+        return result;
     }
 }
